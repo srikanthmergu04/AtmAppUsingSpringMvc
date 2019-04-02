@@ -30,8 +30,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 		trnx.commit();
 		
-		
-		return 0;
+		return primary;
 	}
 
 	public Customer getBalByAcNumber(int acno) {
@@ -42,9 +41,56 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		//Transaction trnx = session.beginTransaction();
 		
 		Customer customer = (Customer) session.get(Customer.class, acno);
+				
+		return customer;
+	}
+
+	public int withdraw(int amount , int acno) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		Transaction trnx  = session.beginTransaction();
+		
+		Customer customer = (Customer) session.get(Customer.class, acno);
+		
+		customer.setBalance(customer.getBalance() - amount);
+		
+		session.update(customer);
+		
+		trnx.commit();
+		
+		System.out.println("Bal in dao = "+customer.getBalance());
+		int bal = customer.getBalance();
+				
+		return bal;
+	}
+
+	public Customer verifyCustomer(int acno) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		Customer customer = (Customer) session.get(Customer.class, acno);
 		
 		
 		return customer;
+	}
+
+	public void deposit(int acno, int amount) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		Transaction trnx  = session.beginTransaction();
+		
+		Customer customer = (Customer) session.get(Customer.class, acno);
+		
+		customer.setBalance(customer.getBalance() + amount);
+		
+		session.update(customer);
+		
+		trnx.commit();
+		
+		
+		
 	}
 
 }

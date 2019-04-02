@@ -31,4 +31,52 @@ public class CustomerServiceImplimentation implements CustomerService {
 		return customer;
 	}
 
+	public int withdraw(int amount , int acno) {
+		// TODO Auto-generated method stub
+		
+		Customer customer = dao.getBalByAcNumber(acno);
+		System.out.println("Balance Availble = "+customer.getBalance());
+		
+		if(amount > customer.getBalance())
+		{
+			return -1;
+		}
+		else
+		{
+			int rem = dao.withdraw(amount , acno);
+			return rem;
+		}
+		
+		//int customer = dao.withdraw(amount);
+		
+		
+		
+	//	if(amount < )
+		
+		
+		
+	}
+
+	public boolean verifyCustomer(int acno, int pin) {
+		// TODO Auto-generated method stub
+		
+		Customer customer = dao.verifyCustomer(acno);
+		
+		if(pin != customer.getPin())
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
+	public void deposit(int acno, int amount) {
+		// TODO Auto-generated method stub
+		
+		dao.deposit(acno, amount);
+		
+	}
+
 }

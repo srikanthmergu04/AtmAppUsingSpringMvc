@@ -13,6 +13,7 @@
 <form action = "BalanceEnquiry">
 Enter your A\c No : <input type = "text" name = "acno">
 <input type = "submit" value = "Check Balance">
+</form>
 </center>
 </body>
 </html>

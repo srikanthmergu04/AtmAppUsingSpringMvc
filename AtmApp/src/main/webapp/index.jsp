@@ -14,11 +14,11 @@
 <input type = "submit" value = "Fund Transer">
 </form>
 
-<form action = "Withdraw">
+<form action = "withdraw.jsp">
 <input type = "submit" value = "Withdraw">
 </form>
 
-<form action = "Deposit">
+<form action = "deposit.jsp">
 <input type = "submit" value = "Deposit">
 </form>
 

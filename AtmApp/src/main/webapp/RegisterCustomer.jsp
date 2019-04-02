@@ -40,7 +40,7 @@ Fill the Student Details
             	<tr>
 			
 				<td>Pin</td>
-				<td><form:input path="pin"/></td>
+				<td><form:password path="pin"/></td>
             </tr>
 
 			<tr>

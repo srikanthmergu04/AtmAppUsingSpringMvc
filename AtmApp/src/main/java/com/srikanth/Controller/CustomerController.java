@@ -34,7 +34,7 @@ public class CustomerController {
 	}
 	
 	@RequestMapping(value="/registerSuccess", method=RequestMethod.POST)
-	public String registerSuccess(@ModelAttribute("customer") Customer customer) {
+	public String registerSuccess(@ModelAttribute("customer") Customer customer , Model model ) {
 		
 	
 		
@@ -43,7 +43,10 @@ public class CustomerController {
 		
 		service.addCustomer(customer);
 		
-		return "redirect:/listStudents";
+		model.addAttribute("customer", customer);
+		
+		
+		return "DisplayAcDetails.jsp";
 	}
 	
 	
@@ -61,5 +64,66 @@ public class CustomerController {
 		return "ShowBalance.jsp";
 		
 	}
+	
+	
+	@RequestMapping("/VerifyCustomer")
+	public String verifyCustomer(HttpServletRequest req , Model model)
+	{
+		int acno = Integer.parseInt(req.getParameter("acno"));
+		System.out.println("id = "+acno);
+		
+		int pin = Integer.parseInt(req.getParameter("pin"));
+		System.out.println("pin = "+pin);
+		
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		System.out.println("amount = "+amount);
+		
+				
+		boolean status = service.verifyCustomer(acno, pin);
+		
+		if(status == true)
+		{
+			int remAmount = service.withdraw(amount , acno);
+			
+			if(remAmount == -1)
+			{
+				return "errorBalance.jsp";
+			}
+			else
+			{
+				model.addAttribute("balance", remAmount);
+				return "DisplayBal.jsp";
+				
+			}
+			
+		}
+		else
+		{
+			return "errorPin.jsp";
+		}
+		
+		
+		
+	}
+	
+	@RequestMapping("/deposit")
+	public String deposit(HttpServletRequest req)
+	{
+		
+		int acno = Integer.parseInt(req.getParameter("acno"));
+		System.out.println("id = "+acno);
+
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		System.out.println("amount = "+amount);
+		
+		service.deposit(acno, amount);
+		
+		
+		
+		return "depositsuccess.jsp";
+		
+	}
+	
+
 
 }
