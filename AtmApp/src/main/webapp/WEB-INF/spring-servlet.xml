@@ -40,7 +40,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 				
 				<!-- Your required Database Name -->
 				<prop key="hibernate.default_schema">dbtesting</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				
 				<prop key="hibernate.show_sql">true</prop>
 				

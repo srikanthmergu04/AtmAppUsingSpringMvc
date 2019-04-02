@@ -23,4 +23,12 @@ public class CustomerServiceImplimentation implements CustomerService {
 		return 0;
 	}
 
+	public Customer getBalByAcNumber(int acno) {
+		// TODO Auto-generated method stub
+		
+		Customer customer = dao.getBalByAcNumber(acno);
+		
+		return customer;
+	}
+
 }

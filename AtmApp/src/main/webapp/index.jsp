@@ -6,7 +6,7 @@
 <input type = "submit" value = "Create Account">
 </form>
 
-<form action = "BalanceEnquiry">
+<form action = "balance.jsp">
 <input type = "submit" value = "Balance Enquiry">
 </form>
 

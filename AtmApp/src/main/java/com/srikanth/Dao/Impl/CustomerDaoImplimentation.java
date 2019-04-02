@@ -34,4 +34,17 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		return 0;
 	}
 
+	public Customer getBalByAcNumber(int acno) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		
+		//Transaction trnx = session.beginTransaction();
+		
+		Customer customer = (Customer) session.get(Customer.class, acno);
+		
+		
+		return customer;
+	}
+
 }
