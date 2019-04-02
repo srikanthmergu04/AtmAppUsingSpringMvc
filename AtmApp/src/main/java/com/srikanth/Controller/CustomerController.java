@@ -124,6 +124,51 @@ public class CustomerController {
 		
 	}
 	
+	@RequestMapping("/fundTranser")
+	public String fundTranser(HttpServletRequest req , Model model)
+	{
+		int acno1 = Integer.parseInt(req.getParameter("acno1"));
+		System.out.println("id = "+acno1);
+		
+		int pin = Integer.parseInt(req.getParameter("pin"));
+		System.out.println("pin = "+pin);
+		
+		int amount = Integer.parseInt(req.getParameter("amount"));
+		System.out.println("amount = "+amount);
+		
+		int acno2 = Integer.parseInt(req.getParameter("acno2"));
+		System.out.println("id = "+acno2);
+		
+	boolean status = service.verifyCustomer(acno1, pin);
+		
+		if(status == true)
+		{
+			int remAmount = service.withdraw(amount , acno1);
+			
+			if(remAmount == -1)
+			{
+				return "errorBal.jsp";
+			}
+			else
+			{
+				
+				model.addAttribute("balance", remAmount);
+				
+				service.deposit(acno2, amount);
+				return "DisplayBal.jsp";
+				
+			}
+			
+		}
+		else
+		{
+			return "errorpassword.jsp";
+		}
+		
+		
+	
+	}
+	
 
 
 }

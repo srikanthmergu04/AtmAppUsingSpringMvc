@@ -10,7 +10,7 @@
 <input type = "submit" value = "Balance Enquiry">
 </form>
 
-<form action = "FundTransfer">
+<form action = "fundtransfer.jsp">
 <input type = "submit" value = "Fund Transer">
 </form>
 
