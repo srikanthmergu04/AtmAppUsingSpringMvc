@@ -1,5 +1,8 @@
 package com.srikanth.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.srikanth.Model.Customer;
 import com.srikanth.Service.Impl.CustomerServiceImplimentation;
+
 
 
 
@@ -167,6 +171,20 @@ public class CustomerController {
 		
 		
 	
+	}
+	
+	@RequestMapping("/customerList")
+	public String getCustomerList(Model model)
+	{
+		
+		List<Customer> list = new ArrayList();
+		
+		list = service.listAllCustomers();
+		
+		model.addAttribute("list", list);
+		
+		return "CustomerDetails.jsp";
+		
 	}
 	
 

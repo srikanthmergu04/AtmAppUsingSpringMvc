@@ -1,6 +1,9 @@
 package com.srikanth.Dao;
 
+import java.util.List;
+
 import com.srikanth.Model.Customer;
+
 
 public interface CustomerDao {
 	
@@ -13,5 +16,7 @@ public interface CustomerDao {
 	public Customer verifyCustomer(int acno);
 	
 	public void deposit(int acno , int amount);
+	
+	public List<Customer> listAllCustomers();
 
 }

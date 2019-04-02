@@ -1,5 +1,9 @@
 package com.srikanth.Dao.Impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.srikanth.Dao.CustomerDao;
 import com.srikanth.Model.Customer;
+
 
 @Repository
 public class CustomerDaoImplimentation implements CustomerDao {
@@ -43,6 +48,8 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		//Transaction trnx = session.beginTransaction();
 		
 		Customer customer = (Customer) session.get(Customer.class, acno);
+		
+		session.close();
 				
 		return customer;
 	}
@@ -74,7 +81,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		Session session = sessionFactory.openSession();
 		Customer customer = (Customer) session.get(Customer.class, acno);
 		
-		
+		session.close();
 		return customer;
 	}
 
@@ -95,5 +102,22 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 		
 	}
+
+	public List<Customer> listAllCustomers() {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+				
+		List<Customer> list = new ArrayList();
+		
+		Query query = session.createQuery("from Customer");
+		
+		list = query.list();
+				
+		session.close();
+				
+		return list;
+		
+		}
 
 }

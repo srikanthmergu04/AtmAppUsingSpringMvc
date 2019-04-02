@@ -1,11 +1,15 @@
 package com.srikanth.Service.Impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.srikanth.Dao.Impl.CustomerDaoImplimentation;
 import com.srikanth.Model.Customer;
 import com.srikanth.Service.CustomerService;
+
 
 @Service
 public class CustomerServiceImplimentation implements CustomerService {
@@ -76,6 +80,17 @@ public class CustomerServiceImplimentation implements CustomerService {
 		// TODO Auto-generated method stub
 		
 		dao.deposit(acno, amount);
+		
+	}
+
+	public List<Customer> listAllCustomers() {
+		// TODO Auto-generated method stub
+		
+	List<Customer> list = new ArrayList();
+		
+		list = dao.listAllCustomers();
+		
+		return list;
 		
 	}
 

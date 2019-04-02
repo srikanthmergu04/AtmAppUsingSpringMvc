@@ -1,6 +1,9 @@
 package com.srikanth.Service;
 
+import java.util.List;
+
 import com.srikanth.Model.Customer;
+
 
 public interface CustomerService {
 	
@@ -13,5 +16,7 @@ public interface CustomerService {
 	public boolean verifyCustomer(int acno , int pin);
 	
 	public void deposit(int acno , int amount);
+	
+	public List<Customer> listAllCustomers();
 
 }
