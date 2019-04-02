@@ -30,6 +30,8 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 		trnx.commit();
 		
+		session.close();
+		
 		return primary;
 	}
 
@@ -62,6 +64,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		System.out.println("Bal in dao = "+customer.getBalance());
 		int bal = customer.getBalance();
 				
+		session.close();
 		return bal;
 	}
 
@@ -88,7 +91,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		session.update(customer);
 		
 		trnx.commit();
-		
+		session.close();
 		
 		
 	}
