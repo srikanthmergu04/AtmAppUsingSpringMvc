@@ -187,6 +187,33 @@ public class CustomerController {
 		
 	}
 	
+	@RequestMapping("/addBeneficiary")
+	public String addBeneficiary(HttpServletRequest req , Model model)
+	{
+		int acNo1 = Integer.parseInt(req.getParameter("acNo1"));
+		int acNo2 = Integer.parseInt(req.getParameter("acNo2"));
+		
+		System.out.println("acNO1 =  "+acNo1+"  acNO2 = "+acNo2);
+		
+		service.addBeneficiary(acNo1, acNo2);
+		
+		return "beneficiarysuccess.jsp";
+		
+	}
+	
+	@RequestMapping("/showBeneficiaryList")
+	public String showBeneficiaryList(HttpServletRequest req , Model model)
+	{
+		int acNo = Integer.parseInt(req.getParameter("acNo"));
+		
+		System.out.println("acNO = "+acNo);
+		
+		service.showBeneficiaryList(acNo);
+		
+		return null;
+			
+	}
+	
 
 
 }

@@ -62,6 +62,9 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 		Customer customer = (Customer) session.get(Customer.class, acno);
 		
+		//Customer cust =  (Customer) session.get(Customer.class, acno);
+		//System.out.println("checking first level cache");
+		
 		customer.setBalance(customer.getBalance() - amount);
 		
 		session.update(customer);
@@ -119,5 +122,41 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		return list;
 		
 		}
+
+	public void addBeneficiary(int acNo1, int acNo2) {
+		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		
+		Transaction trnx  = session.beginTransaction();
+		
+		Customer c1 = (Customer) session.get(Customer.class, acNo1);
+		
+		Customer c2 = (Customer) session.get(Customer.class, acNo2);
+		
+		List<Customer> list = new ArrayList();
+		
+		if(c1.getBeneficiary() == null)
+		{
+			c1.setBeneficiary(list);
+		}
+		
+				
+		c1.getBeneficiary().add(c2);
+		
+		session.update(c1);
+		
+		trnx.commit();
+		
+		
+		
+	}
+
+	public void showBeneficiaryList(int acNo) {
+		// TODO Auto-generated method stub
+		
+		
+		
+	}
 
 }

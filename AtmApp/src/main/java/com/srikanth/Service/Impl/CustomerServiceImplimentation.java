@@ -94,4 +94,18 @@ public class CustomerServiceImplimentation implements CustomerService {
 		
 	}
 
+	public void addBeneficiary(int acNo1, int acNo2) {
+		// TODO Auto-generated method stub
+		
+		dao.addBeneficiary(acNo1, acNo2);
+		
+	}
+
+	public void showBeneficiaryList(int acNo) {
+		// TODO Auto-generated method stub
+		
+		dao.showBeneficiaryList(acNo);
+		
+	}
+
 }

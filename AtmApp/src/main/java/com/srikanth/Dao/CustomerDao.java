@@ -18,5 +18,9 @@ public interface CustomerDao {
 	public void deposit(int acno , int amount);
 	
 	public List<Customer> listAllCustomers();
+	
+	public void addBeneficiary(int acNo1 , int acNo2);
+	
+	public void showBeneficiaryList(int acNo);
 
 }
