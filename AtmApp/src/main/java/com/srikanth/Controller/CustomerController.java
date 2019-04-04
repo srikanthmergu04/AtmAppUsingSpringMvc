@@ -132,7 +132,7 @@ public class CustomerController {
 	public String fundTranser(HttpServletRequest req , Model model)
 	{
 		int acno1 = Integer.parseInt(req.getParameter("acno1"));
-		System.out.println("id = "+acno1);
+		System.out.println("acNo1 = "+acno1);
 		
 		int pin = Integer.parseInt(req.getParameter("pin"));
 		System.out.println("pin = "+pin);
@@ -141,7 +141,7 @@ public class CustomerController {
 		System.out.println("amount = "+amount);
 		
 		int acno2 = Integer.parseInt(req.getParameter("acno2"));
-		System.out.println("id = "+acno2);
+		System.out.println("acNO2 = "+acno2);
 		
 	boolean status = service.verifyCustomer(acno1, pin);
 		
@@ -208,11 +208,17 @@ public class CustomerController {
 		
 		System.out.println("acNO = "+acNo);
 		
-		List<Customer> customer = new ArrayList<Customer>();
 		
-		customer = service.showBeneficiaryList(acNo);
 		
-		m.addAttribute("BeneficiaryList", customer);
+		Customer customer = service.showBeneficiaryList(acNo);
+		
+		List<Customer> list = customer.getBeneficiary();
+		
+		int acNum = customer.getAcNo();
+		
+		m.addAttribute("acNum", acNum);
+		
+		m.addAttribute("BeneficiaryList", list);
 		
 		/*
 		

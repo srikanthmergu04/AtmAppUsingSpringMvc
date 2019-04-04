@@ -45,7 +45,7 @@
    <input type = "submit" value = "update">
     <form action = "deleteStudent">
    <input type = "submit" value = "delete"> -->
-   <br><br>
+   <br>
   <form action = "index.jsp">
 <input type = "submit" value = "Homepage">
 </form> 

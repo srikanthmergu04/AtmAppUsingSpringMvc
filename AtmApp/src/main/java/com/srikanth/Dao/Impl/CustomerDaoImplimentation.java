@@ -154,7 +154,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 	}
 
-	public List<Customer> showBeneficiaryList(int acNo) {
+	public Customer showBeneficiaryList(int acNo) {
 		// TODO Auto-generated method stub
 		
 		Session session = sessionFactory.openSession();
@@ -165,7 +165,8 @@ public class CustomerDaoImplimentation implements CustomerDao {
 				
 		Customer cs = (Customer) q.uniqueResult();
 		
-		List<Customer> customer = cs.getBeneficiary();
+		
+		//List<Customer> customer = cs.getBeneficiary();
 		
 		//Customer cs = l.get(1);
 		
@@ -183,7 +184,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		*/
 		
 		
-		return customer;
+		return cs;
 		
 		
 		

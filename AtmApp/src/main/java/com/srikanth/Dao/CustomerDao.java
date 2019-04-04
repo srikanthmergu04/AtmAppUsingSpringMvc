@@ -21,6 +21,6 @@ public interface CustomerDao {
 	
 	public void addBeneficiary(int acNo1 , int acNo2);
 	
-	public List<Customer> showBeneficiaryList(int acNo);
+	public Customer showBeneficiaryList(int acNo);
 
 }
