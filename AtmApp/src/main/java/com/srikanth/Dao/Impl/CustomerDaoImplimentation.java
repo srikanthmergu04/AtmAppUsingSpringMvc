@@ -1,6 +1,7 @@
 package com.srikanth.Dao.Impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -112,10 +113,11 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		Session session = sessionFactory.openSession();
 				
 		List<Customer> list = new ArrayList();
-		
+				
 		Query query = session.createQuery("from Customer");
 		
 		list = query.list();
+
 				
 		session.close();
 				
@@ -152,8 +154,40 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		
 	}
 
-	public void showBeneficiaryList(int acNo) {
+	public List<Customer> showBeneficiaryList(int acNo) {
 		// TODO Auto-generated method stub
+		
+		Session session = sessionFactory.openSession();
+		
+		Query q = session.createQuery("from Customer where acNO =  :acNo");
+		
+		q.setParameter("acNo", acNo);
+				
+		Customer cs = (Customer) q.uniqueResult();
+		
+		List<Customer> customer = cs.getBeneficiary();
+		
+		//Customer cs = l.get(1);
+		
+	
+		/*
+		System.out.println(cs.getBeneficiary().get(0).getAcNo()+" :: "+cs.getBeneficiary().get(0).getName());
+		System.out.println(cs.getBeneficiary().get(1).getAcNo()+" :: "+cs.getBeneficiary().get(1).getName());
+		System.out.println(cs.getBeneficiary().get(2).getAcNo()+" :: "+cs.getBeneficiary().get(2).getName());
+		*/
+		
+		/*
+		System.out.println(customer.get(0).getAcNo()+" :: "+customer.get(0).getName());
+		System.out.println(customer.get(1).getAcNo()+" :: "+customer.get(1).getName());
+		System.out.println(customer.get(2).getAcNo()+" :: "+customer.get(2).getName());
+		*/
+		
+		
+		return customer;
+		
+		
+		
+		
 		
 		
 		

@@ -21,6 +21,6 @@ public interface CustomerService {
 	
 	public void addBeneficiary(int acNo1 , int acNo2);
 	
-	public void showBeneficiaryList(int acNo);
+	public List<Customer> showBeneficiaryList(int acNo);
 
 }

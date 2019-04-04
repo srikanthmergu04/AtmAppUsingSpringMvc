@@ -101,10 +101,13 @@ public class CustomerServiceImplimentation implements CustomerService {
 		
 	}
 
-	public void showBeneficiaryList(int acNo) {
+	public List<Customer> showBeneficiaryList(int acNo) {
 		// TODO Auto-generated method stub
+		List<Customer> customer = new ArrayList<Customer>();
 		
-		dao.showBeneficiaryList(acNo);
+		customer =  dao.showBeneficiaryList(acNo);
+		
+		return customer;
 		
 	}
 

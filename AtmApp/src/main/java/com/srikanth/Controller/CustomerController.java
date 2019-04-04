@@ -202,15 +202,30 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/showBeneficiaryList")
-	public String showBeneficiaryList(HttpServletRequest req , Model model)
+	public String showBeneficiaryList(HttpServletRequest req , Model m)
 	{
 		int acNo = Integer.parseInt(req.getParameter("acNo"));
 		
 		System.out.println("acNO = "+acNo);
 		
-		service.showBeneficiaryList(acNo);
+		List<Customer> customer = new ArrayList<Customer>();
 		
-		return null;
+		customer = service.showBeneficiaryList(acNo);
+		
+		m.addAttribute("BeneficiaryList", customer);
+		
+		/*
+		
+		for (Customer customer2 : customer) {
+			
+			System.out.println(customer2.getAcNo()+" :*: "+customer2.getName());
+		}
+		
+		*/
+		
+		
+		
+		return "displayBeneficiaryList.jsp";
 			
 	}
 	
