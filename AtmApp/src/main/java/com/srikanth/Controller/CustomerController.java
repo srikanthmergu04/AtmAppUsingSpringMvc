@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.srikanth.Model.Customer;
 import com.srikanth.Service.Impl.CustomerServiceImplimentation;
@@ -26,13 +27,18 @@ public class CustomerController {
 	CustomerServiceImplimentation service;
 	
 	@RequestMapping("/CreateAccount")
-	public String registerStudents(Model model)
+	public ModelAndView registerStudents(Model model)
 	{
 		//System.out.println("service obj = "+service);
 		
-		model.addAttribute("customer", new Customer());
+		//model.addAttribute("customer", new Customer());
+		ModelAndView m = new ModelAndView();
 
-		return "RegisterCustomer.jsp";
+		m.addObject("customer", new Customer());
+		
+		m.setViewName("RegisterCustomer.jsp");
+		
+		return m;
 	
 		
 	}

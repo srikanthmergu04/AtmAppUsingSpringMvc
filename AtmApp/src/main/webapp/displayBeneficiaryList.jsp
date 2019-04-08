@@ -4,7 +4,8 @@
 %>
 
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>    
-   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
   <center>
 <!-- <h1>Students List</h1> -->
 <h1>Beneficiary List</h1>  

@@ -2,15 +2,19 @@ package com.srikanth.Model;
 
 import java.util.List;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.DynamicUpdate;
 
 
@@ -18,6 +22,8 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table
 @DynamicUpdate
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Customer {
 	
 	@Id
@@ -38,6 +44,7 @@ public class Customer {
 	
 	@Column
 	private Integer pin;
+	
 	
 	@ManyToMany(cascade = CascadeType.ALL , targetEntity = Customer.class)
 	private List<Customer> beneficiary;

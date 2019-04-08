@@ -62,7 +62,7 @@ public class CustomerDaoImplimentation implements CustomerDao {
 		Transaction trnx  = session.beginTransaction();
 		
 		Customer customer = (Customer) session.get(Customer.class, acno);
-		
+		//System.out.println("-------------------------------------");
 		//Customer cust =  (Customer) session.get(Customer.class, acno);
 		//System.out.println("checking first level cache");
 		

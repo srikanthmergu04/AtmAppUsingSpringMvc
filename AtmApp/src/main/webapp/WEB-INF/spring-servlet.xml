@@ -29,6 +29,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	</bean>
 
 	<!-- Session Factory Declaration -->
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -37,12 +38,21 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 			<props>
 				
 				<prop key="hibernate.dialect">org.hibernate.dialect.DerbyDialect</prop>
-				
 				<!-- Your required Database Name -->
 				<prop key="hibernate.default_schema">dbtesting</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				
+				<!-- 	<prop key="hibernate.cache.region.factory_class">org.redisson.hibernate.RedissonRegionFactory</prop>
+				<prop key="hibernate.cache.region.factory_class">org.redisson.hibernate.RedissonLocalCachedRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.redisson.config">/redisson.yaml</prop>
+				<prop key="hibernate.cache.redisson.config">/redisson.yaml</prop> -->
+			
+				
 				
 				</props>
 		</property>
